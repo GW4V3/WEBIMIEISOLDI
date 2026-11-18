@@ -61,6 +61,30 @@
     footer { text-align: center; padding: 12px 0 28px; font-size: 0.74rem; color: #6ee7b7; opacity: 0.65; }
   </style>
 </head>
+<script>
+  function openKofi() {
+    if (window.kofiWidgetOverlay) {
+      apriWidget();
+      return;
+    }
+    const s = document.createElement('script');
+    s.src = 'https://' + 'storage.ko-fi.com' + '/cdn/scripts/overlay-widget.js';
+    s.onload = apriWidget;
+    document.body.appendChild(s);
+  }
+  function apriWidget() {
+    kofiWidgetOverlay.draw('giuseppecrivello', {
+      'type': 'floating-chat',
+      'floating-chat.donateButton.text': 'Supporta IMIEISOLDI',
+      'floating-chat.donateButton.background-color': '#10b981',
+      'floating-chat.donateButton.text-color': '#fff'
+    });
+    setTimeout(() => {
+      const btn = document.querySelector('.floatingchat-donate-button');
+      if (btn) btn.click();
+    }, 300);
+  }
+</script>
 <body>
   <div class="container">
     <header>
@@ -107,7 +131,7 @@
       <p>Nessuno store richiesto: aprila e salvala nella schermata Home come una vera app.</p>
       <div class="cta">
         <button id="installBtn" class="btn-main">🚀 Apri e Installa l'App Gratis</button>
-        <a href="https://ko-fi.com" target="_blank" class="btn-sec">Supporta lo sviluppo dell'app 🚀</a>
+        <button onclick="openKofi()" class="btn-sec" style="cursor:pointer; font-family:inherit;">Supporta lo sviluppo dell'app 🚀</button>
       </div>
       <div class="guide-grid">
         <div class="guide-card"><strong>🍎 iPhone (Safari)</strong><ol><li>Tocca <strong>"Apri e Installa"</strong> qui sopra.</li><li>Tocca <strong>Condividi</strong> (quadrato con freccia ↑).</li><li>Scegli <strong>"Aggiungi alla schermata Home"</strong>.</li></ol></div>
