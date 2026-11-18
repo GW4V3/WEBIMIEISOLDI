@@ -4,8 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>IMIEISOLDI – Gestisci i tuoi soldi in 2 secondi</title>
-  <link rel="icon" href="icon-192.png" />
-  <link rel="apple-touch-icon" href="icon-192.png" />
+  <link rel="icon" href="image_d857c56b.jpg" />
+  <link rel="apple-touch-icon" href="image_d857c56b.jpg" />
   <link rel="preconnect" href="https://googleapis.com">
   <link href="https://googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
   <style>
@@ -13,13 +13,12 @@
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: 'Plus Jakarta Sans', sans-serif; background: radial-gradient(circle at top right, #0f4c3a, var(--bg) 65%); color: #fff; line-height: 1.55; overflow-x: hidden; }
     .container { max-width: 980px; margin: 0 auto; padding: 0 18px; }
-    header { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 18px 0; }
-    .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-    .brand-icon { width: 40px; height: 40px; border-radius: 12px; background: linear-gradient(135deg, #10b981, #047857); border: 1.5px solid rgba(253, 230, 138, 0.45); display: flex; align-items: center; justify-content: center; overflow: hidden; flex-shrink: 0; box-shadow: 0 6px 16px rgba(16, 185, 129, 0.3); }
-    .brand-icon img { width: 100%; height: 100%; object-fit: cover; }
-    .brand-name { font-size: 1.25rem; font-weight: 800; letter-spacing: -0.5px; background: linear-gradient(135deg, #fff, var(--gold-l)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    .btn-top { white-space: nowrap; font-size: 0.82rem; font-weight: 700; color: var(--muted); text-decoration: none; padding: 8px 14px; border-radius: 11px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.14); flex-shrink: 0; }
-    .hero { text-align: center; padding: 22px 0 48px; }
+    header { display: flex; justify-content: center; align-items: center; padding: 26px 0 12px; }
+    .brand { display: flex; align-items: center; justify-content: center; gap: 14px; text-decoration: none; }
+    .brand-icon { width: 52px; height: 52px; border-radius: 15px; background: linear-gradient(135deg, #10b981, #047857); border: 2px solid rgba(253, 230, 138, 0.5); display: flex; align-items: center; justify-content: center; overflow: hidden; flex-shrink: 0; box-shadow: 0 8px 22px rgba(16, 185, 129, 0.35); }
+    .brand-icon img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .brand-name { font-size: 1.75rem; font-weight: 800; letter-spacing: -0.6px; background: linear-gradient(135deg, #fff, var(--gold-l)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .hero { text-align: center; padding: 18px 0 48px; }
     .pill { display: inline-flex; align-items: center; gap: 8px; background: rgba(12, 49, 38, 0.9); border: 1px solid rgba(16, 185, 129, 0.4); padding: 7px 16px; border-radius: 99px; font-size: 0.76rem; font-weight: 700; margin-bottom: 22px; box-shadow: 0 8px 20px rgba(0,0,0,0.25); }
     .dot { width: 7px; height: 7px; border-radius: 50%; background: #34d399; }
     .hero h1 { font-size: clamp(2.1rem, 6vw, 3.4rem); font-weight: 800; line-height: 1.15; margin-bottom: 16px; letter-spacing: -1px; }
@@ -47,14 +46,10 @@
     <header>
       <a href="#" class="brand">
         <div class="brand-icon">
-          <img src="icon-192.png" alt="Logo IMIEISOLDI" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
-          <div style="display:none; width:100%; height:100%; align-items:center; justify-content:center; background:linear-gradient(135deg,#10b981,#064e3b);">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fde68a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M14.5 9a3.5 3.5 0 0 0-5 0v6a3.5 3.5 0 0 0 5 0"/><line x1="8" y1="11" x2="13" y2="11"/><line x1="8" y1="13" x2="13" y2="13"/></svg>
-          </div>
+          <img src="image_d857c56b.jpg" alt="Logo IMIEISOLDI" />
         </div>
         <span class="brand-name">IMIEISOLDI</span>
       </a>
-      <a href="https://vercel.app" class="btn-top">Apri App →</a>
     </header>
 
     <section class="hero">
@@ -91,9 +86,9 @@
   </div>
 
   <script>
-    let deferredPrompt;
+    const APP_URL = "https://i-miei-soldi-six.vercel.app";
     const btn = document.getElementById('installBtn');
-    const APP_URL = "https://vercel.app";
+    let deferredPrompt;
 
     window.addEventListener('beforeinstallprompt', (e) => {
       e.preventDefault();
