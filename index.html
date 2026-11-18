@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IMIEISOLDI – Gestisci i tuoi soldi in 2 secondi</title>
+  <link rel="preconnect" href="https://googleapis.com">
+  <link href="https://googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #062119;
+      --bg-card: #0c3126;
+      --emerald: #10b981;
+      --gold: #f59e0b;
+      --gold-light: #fde68a;
+      --text-main: #ffffff;
+      --text-muted: #a7f3d0;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: radial-gradient(circle at top right, #0f4c3a, var(--bg-dark) 60%);
+      color: var(--text-main);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    .container {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    /* Header */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px 0;
+    }
+    .logo {
+      font-size: 1.4rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .logo span {
+      background: linear-gradient(135deg, var(--gold), var(--gold-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .badge-free {
+      background: rgba(16, 185, 129, 0.18);
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      color: #6ee7b7;
+      padding: 6px 14px;
+      border-radius: 99px;
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+    /* Hero */
+    .hero {
+      text-align: center;
+      padding: 40px 0 60px;
+    }
+    .hero h1 {
+      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 20px;
+      letter-spacing: -1px;
+    }
+    .hero h1 em {
+      font-style: normal;
+      background: linear-gradient(135deg, #34d399, var(--gold));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero p {
+      font-size: 1.12rem;
+      color: #d1fae5;
+      max-width: 620px;
+      margin: 0 auto 32px;
+      opacity: 0.9;
+    }
+    .cta-group {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 16px;
+      margin-bottom: 50px;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, #10b981, #059669);
+      color: #fff;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.05rem;
+      padding: 16px 32px;
+      border-radius: 16px;
+      box-shadow: 0 12px 30px rgba(16, 185, 129, 0.35);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 36px rgba(16, 185, 129, 0.5);
+    }
+    .btn-coffee {
+      background: rgba(245, 158, 11, 0.14);
+      border: 1px solid rgba(245, 158, 11, 0.45);
+      color: var(--gold-light);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 16px 26px;
+      border-radius: 16px;
+      transition: background 0.2s ease;
+    }
+    .btn-coffee:hover {
+      background: rgba(245, 158, 11, 0.25);
+    }
+    /* Phone Mockup */
+    .phone-frame {
+      width: 290px;
+      margin: 0 auto;
+      background: #031510;
+      border: 6px solid #164e3f;
+      border-radius: 38px;
+      padding: 18px;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.6);
+      text-align: left;
+    }
+    .phone-notch {
+      width: 90px;
+      height: 18px;
+      background: #164e3f;
+      border-radius: 12px;
+      margin: 0 auto 18px;
+    }
+    .mock-card {
+      background: linear-gradient(135deg, #0f4c3a, #082f24);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+      border-radius: 20px;
+      padding: 16px;
+      margin-bottom: 14px;
+    }
+    .mock-label { font-size: 0.75rem; color: #a7f3d0; }
+    .mock-amount { font-size: 1.8rem; font-weight: 800; color: #fff; margin: 4px 0; }
+    .mock-pill {
+      display: inline-block;
+      background: rgba(245, 158, 11, 0.2);
+      color: var(--gold-light);
+      font-size: 0.7rem;
+      padding: 3px 10px;
+      border-radius: 99px;
+      font-weight: 700;
+    }
+    .mock-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(255,255,255,0.05);
+      padding: 10px 12px;
+      border-radius: 12px;
+      margin-bottom: 8px;
+      font-size: 0.85rem;
+    }
+    /* Features */
+    .features {
+      padding: 50px 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background: var(--bg-card);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 24px;
+      padding: 28px 24px;
+    }
+    .card-icon {
+      font-size: 1.8rem;
+      margin-bottom: 12px;
+    }
+    .card h3 {
+      font-size: 1.15rem;
+      margin-bottom: 8px;
+      color: #fff;
+    }
+    .card p {
+      font-size: 0.92rem;
+      color: #a7f3d0;
+      opacity: 0.85;
+    }
+    /* Install Guide */
+    .install-box {
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(245, 158, 11, 0.1));
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      border-radius: 28px;
+      padding: 36px 28px;
+      margin: 30px 0 60px;
+      text-align: center;
+    }
+    .install-box h2 {
+      font-size: 1.6rem;
+      margin-bottom: 10px;
+    }
+    .install-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+      margin-top: 24px;
+      text-align: left;
+    }
+    .step {
+      background: rgba(6, 33, 25, 0.7);
+      padding: 18px;
+      border-radius: 18px;
+    }
+    .step strong { color: var(--gold-light); display: block; margin-bottom: 6px; }
+    footer {
+      text-align: center;
+      padding: 30px 0 50px;
+      font-size: 0.85rem;
+      color: #6ee7b7;
+      opacity: 0.7;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="logo">💶 <span>IMIEISOLDI</span></div>
+      <div class="badge-free">100% GRATUITA • ZERO PUBBLICITÀ</div>
+    </header>
+
+    <section class="hero">
+      <h1>Smetti di chiederti <em>dove finiscono i tuoi soldi</em>.</h1>
+      <p>L'app semplice, veloce e su misura per te: il tuo mese parte dal giorno in cui ricevi lo stipendio, segni una spesa in 2 secondi e hai tutto sempre sotto controllo.</p>
+      
+      <div class="cta-group">
+        <a href="https://vercel.app" class="btn-primary">🚀 Apri e Installa l'App Gratis</a>
+        <!-- Sostituisci il link qui sotto con il tuo link Ko-fi o PayPal.me quando lo crei -->
+        <a href="https://ko-fi.com" target="_blank" class="btn-coffee">☕ Offrimi un caffè (Offerta libera)</a>
+      </div>
+
+      <div class="phone-frame">
+        <div class="phone-notch"></div>
+        <div class="mock-card">
+          <div class="mock-label">Budget disponibile dal tuo stipendio</div>
+          <div class="mock-amount">€ 1.245,50</div>
+          <span class="mock-pill">⚡ Widget Rapido Attivo</span>
+        </div>
+        <div class="mock-row">
+          <span>🛒 Supermercato</span>
+          <strong>- € 42,80</strong>
+        </div>
+        <div class="mock-row">
+          <span>🏠 Affitto (Spesa Fissa)</span>
+          <strong>- € 550,00</strong>
+        </div>
+        <div class="mock-row">
+          <span>💼 Stipendio</span>
+          <strong style="color:#34d399;">+ € 1.850,00</strong>
+        </div>
+      </div>
+    </section>
+
+    <section class="features">
+      <div class="card">
+        <div class="card-icon">⚡</div>
+        <h3>Inserimento in 2 secondi</h3>
+        <p>Apri l'app e digita subito l'importo dal widget rapido centrale, senza passaggi inutili o menu complicati.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">📅</div>
+        <h3>Il mese parte dallo stipendio</h3>
+        <p>Non importa se ti pagano il 10, il 15 o il 27: il calcolo del tuo budget si adatta alla data reale del tuo stipendio.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🔄</div>
+        <h3>Spese fisse automatiche</h3>
+        <p>Imposta abbonamenti, bollette e rate una sola volta: si ripetono ogni mese in automatico finché non decidi tu.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">📊</div>
+        <h3>Report PDF, Excel e Immagine</h3>
+        <p>Esporta in un clic il riepilogo delle spese pagate nel periodo che preferisci, pronto da salvare o condividere.</p>
+      </div>
+    </section>
+
+    <section class="install-box">
+      <h2>Come installarla sul telefono in 10 secondi</h2>
+      <p style="color:#d1fae5; font-size:0.95rem;">Non serve scaricarla dagli store: si installa direttamente dal browser come un'app vera.</p>
+      <div class="install-steps">
+        <div class="step">
+          <strong>🍎 Su iPhone / iPad (Safari)</strong>
+          1. Tocca il pulsante verde <b>"Apri e Installa l'App Gratis"</b> qui sopra usando <b>Safari</b>.<br>
+          2. Tocca l'icona <b>Condividi</b> (quadrato con freccia in su) in basso.<br>
+          3. Seleziona <b>"Aggiungi alla schermata Home"</b>.
+        </div>
+        <div class="step">
+          <strong>🤖 Su Android (Chrome)</strong>
+          1. Tocca il pulsante verde <b>"Apri e Installa l'App Gratis"</b> usando <b>Chrome</b>.<br>
+          2. Tocca i <b>tre puntini (⋮)</b> in alto a destra.<br>
+          3. Seleziona <b>"Aggiungi a schermata Home"</b> o <b>"Installa app"</b>.
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      IMIEISOLDI • Creata per semplificare la gestione delle tue spese quotidiane.
+    </footer>
+  </div>
+</body>
+</html>
